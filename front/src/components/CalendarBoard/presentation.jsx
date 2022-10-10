@@ -10,7 +10,7 @@ const days = ["日", "月", "火", "水", "木", "金", "土"];
 // const calendar = createCalendar();
 
 
-const CalendarBoard = ({calendar,month}) => {
+const CalendarBoard = ({calendar,month, openAddScheduleDialog }) => {
   console.log(calendar);
   return (
     <div className={styles.container}>
@@ -29,9 +29,9 @@ const CalendarBoard = ({calendar,month}) => {
        </li>
         ))}
         {calendar.map(c => (
-          <li key={c.toISOString()}>
-            <CalendarElement day={c} month={month} />
-          </li>
+          <li key={c.toISOString()} onClick={() => openAddScheduleDialog(c)}>
+          <CalendarElement day={c} month={month} />
+        </li>
         ))}
       </GridList>
     </div>
