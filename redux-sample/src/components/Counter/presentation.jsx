@@ -1,6 +1,6 @@
 import React from "react";
 
-// ==========ここから編集する==========
+
 const Counter = ({ count, increment, decrement }) => (
   <>
     <div>{count}</div>
@@ -8,6 +8,6 @@ const Counter = ({ count, increment, decrement }) => (
     <button onClick={() => decrement(1)}>-</button>
   </>
 );
-// ==========ここまで編集する==========
+
 
 export default Counter;
