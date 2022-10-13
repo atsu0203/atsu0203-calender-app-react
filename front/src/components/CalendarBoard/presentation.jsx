@@ -10,8 +10,14 @@ const days = ["日", "月", "火", "水", "木", "金", "土"];
 // const calendar = createCalendar();
 
 
-const CalendarBoard = ({calendar,month, openAddScheduleDialog }) => {
-  console.log(calendar);
+const CalendarBoard = ({
+  calendar,
+  month,
+  openAddScheduleDialog,
+  openCurrentScheduleDialog
+ }) => {
+  // console.log(calendar);
+  // console.log(schedules);
   return (
     <div className={styles.container}>
       <GridList cellHeight="auto" className={styles.grid} cols={7} spacing={0}>
@@ -28,10 +34,17 @@ const CalendarBoard = ({calendar,month, openAddScheduleDialog }) => {
          </Typography>
        </li>
         ))}
-        {calendar.map(c => (
-          <li key={c.toISOString()} onClick={() => openAddScheduleDialog(c)}>
-          <CalendarElement day={c} month={month} />
-        </li>
+        {calendar.map(({ date, schedules }) => (
+          <li
+            key={date.toISOString()}
+            onClick={() => openAddScheduleDialog(date)}
+          >
+            <CalendarElement 
+            day={date}
+            month={month}
+            schedules={schedules}
+            onClickSchedule={openCurrentScheduleDialog} />
+          </li>
         ))}
       </GridList>
     </div>
