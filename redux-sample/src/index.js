@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 
 import rootReducer from "./redux/rootReducer";
 import Counter from "./components/Counter/container";
 
-const store = createStore(rootReducer);
+import thunk from "redux-thunk";
 
-const App = () => (
+const store = createStore(rootReducer, applyMiddleware(thunk));const App = () => (
   <Provider store={store}>
     <Counter />
   </Provider>
