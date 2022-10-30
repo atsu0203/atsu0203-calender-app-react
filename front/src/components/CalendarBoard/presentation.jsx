@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-import { GridList,Typography } from "@material-ui/core";
+import { Typography, ImageList  } from "@material-ui/core";
 // import { ImageList } from '@material-ui/core';
 import CalendarElement from "../CalendarElement";
-// import { createCalendar } from "../../services/calendar";
 import * as styles from "./style.css";
 
 const days = ["日", "月", "火", "水", "木", "金", "土"];
 
-// const calendar = createCalendar();
 
 
 const CalendarBoard = ({
@@ -21,11 +19,9 @@ const CalendarBoard = ({
   // 初回のみdataを取得する
   fetchSchedule();
   }, []);
-  // console.log(calendar);
-  // console.log(schedules);
   return (
     <div className={styles.container}>
-      <GridList cellHeight="auto" className={styles.grid} cols={7} spacing={0}>
+      <ImageList rowHeight="auto" className={styles.grid} cols={7} gap={0}>
         {days.map(d => (
          <li key={d}>
          <Typography
@@ -51,7 +47,7 @@ const CalendarBoard = ({
             onClickSchedule={openCurrentScheduleDialog} />
           </li>
         ))}
-      </GridList>
+      </ImageList>
     </div>
   );
 };
