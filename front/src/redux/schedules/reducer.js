@@ -1,11 +1,11 @@
-import dayjs from "dayjs";
+// import dayjs from "dayjs";
 import {
   SCHEDULES_SET_LOADING,
   SCHEDULES_ADD_ITEM,
-  // SCHEDULES_ADD_ITEM_SUCCESS,
   SCHEDULES_FETCH_ITEM,
-  // SCHEDULES_FETCH_ITEM_SUCCESS,
-  SCHEDULES_DELETE_ITEM
+  SCHEDULES_DELETE_ITEM,
+  SCHEDULES_ASYNC_FAILURE,
+  SCHEDULES_RESET_ERROR
 } from "./actions";
 
 const init = {
@@ -13,23 +13,8 @@ const init = {
   isLoading: false
 };
 
-
-// const init = {
-//   items: [
-//     {
-//       id: 1,
-//       title: "テスト",
-//       date: dayjs(),
-//       location: "会議室",
-//       description: "経営戦略について"
-//     }
-//   ],
-//   isLoading: false
-// };
-
-
 const schedulesReducer = (state = init, action) => {
-  const { type, payload } = action;
+  const { type, payload, error } = action;
 
   switch (type) {
     case SCHEDULES_ADD_ITEM:
@@ -55,7 +40,16 @@ const schedulesReducer = (state = init, action) => {
         isLoading: false,
         items: payload
       };
-  
+    case SCHEDULES_ASYNC_FAILURE:
+      return {
+        ...state,
+        error
+      };
+    case SCHEDULES_RESET_ERROR:
+      return {
+        ...state,
+        error: null
+      };
     default:
       return state;
   }
