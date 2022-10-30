@@ -28,7 +28,7 @@ const Navigation = ({ setNextMonth, setPreviousMonth, setMonth, month }) => {
     </IconButton>
     <img src="/images/calendar_icon.png" width="40" height="40" />
     <StyledTypography color="textSecondary" variant="h5" component="h1">
-      カレンダー
+      Calender
     </StyledTypography>
     <IconButton size="small"onClick={setPreviousMonth}>
       <ArrowBackIos />
