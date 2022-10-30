@@ -32,6 +32,8 @@ services:
     volumes:
       - ./db/initdb.d:/docker-entrypoint-initdb.d
       - ./db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - '4306:3306'
     networks:
       - private-subnet
 
