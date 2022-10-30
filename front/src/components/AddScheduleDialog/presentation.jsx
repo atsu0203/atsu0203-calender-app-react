@@ -8,7 +8,8 @@ import {
   Input,
   Grid,
   IconButton,
-  Typography
+  Typography,
+  Tooltip
 } from "@material-ui/core";
 
 import {
@@ -51,9 +52,11 @@ const AddScheduleDialog = ({
     <Dialog open={isDialogOpen} onClose={closeDialog} maxWidth="xs" fullWidth>
       <DialogActions>
         <div className={styles.closeButton}>
-          <IconButton onClick={closeDialog} size="small">
-            <Close />
-          </IconButton>
+          <Tooltip title="閉じる" placement="bottom">
+            <IconButton onClick={closeDialog} size="small">
+              <Close />
+            </IconButton>
+          </Tooltip>
         </div>
       </DialogActions>
       <DialogContent>
@@ -73,7 +76,7 @@ const AddScheduleDialog = ({
             </Typography>
           )}
         </div>
-        <Grid container spacing={1} alignItems="center" justify="space-between">
+        <Grid container spacing={1} alignItems="center" justifyContent="space-between">
           <Grid item>
             <AccessTime />
           </Grid>
@@ -90,7 +93,7 @@ const AddScheduleDialog = ({
             />
           </Grid>
         </Grid>
-        <Grid container spacing={1} alignItems="center" justify="space-between">
+        <Grid container spacing={1} alignItems="center" justifyContent="space-between">
           <Grid item>
             <LocationOnOutlined />
           </Grid>
@@ -104,7 +107,7 @@ const AddScheduleDialog = ({
             />
           </Grid>
         </Grid>
-        <Grid container spacing={1} alignItems="center" justify="space-between">
+        <Grid container spacing={1} alignItems="center" justifyContent="space-between">
           <Grid item>
             <NotesOutlined />
           </Grid>
